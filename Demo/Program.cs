@@ -18,24 +18,15 @@ namespace Demo
 
             app.UseRouting();
 
-            app.Use(async (context, next) =>
-            {
-                Console.WriteLine("Before");
-                await next(); // Call the next middleware
-                Console.WriteLine("After");
-            });
+            app.UseStaticFiles();
 
             app.MapGet("/", () => "Hello World!");
-            app.MapGet("/{id}", async context =>
-            {
-                Console.WriteLine("Done");
-                await context.Response.WriteAsync($"Id = {context.Request.RouteValues["id"]}");
-            });
 
+            
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller}/{action=index}/{id?}/{name?}"
+                pattern: "{controller}/{action=index}/{id?}"
                 );
 
             #endregion

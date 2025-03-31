@@ -28,7 +28,7 @@ namespace Demo.Controllers
 
         public ActionResult Hamada()
         {
-            var Result = RedirectToAction("Index");
+            var Result = RedirectToAction(actionName: "Index");
             return Result;
         }
 
